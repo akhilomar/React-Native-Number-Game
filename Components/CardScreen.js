@@ -4,47 +4,47 @@ import Cards from './Cards';
 
 const CardScreen = () => {
 
-    // const data = ['1','2','3','4','5','6','7','8','9'];
+    const data = ['1','2','3','4','5','6','7','8','9'];
 
-    const DATA = [
-      {
-        id: '1',
-        title: '1',
-      },
-      {
-        id: '2',
-        title: '2',
-      },
-      {
-        id: '3',
-        title: '3',
-      },
-      {
-        id: '4',
-        title: '4',
-      },
-      {
-        id: '5',
-        title: '5',
-      },
-      {
-        id: '6',
-        title: '6',
-      },
-      {
-        id: '7',
-        title: '7',
-      },
-      {
-        id: '8',
-        title: '8',
-      },
-      {
-        id: '9',
-        title: '9',
-      }
+    // const DATA = [
+    //   {
+    //     id: '1',
+    //     title: '1',
+    //   },
+    //   {
+    //     id: '2',
+    //     title: '2',
+    //   },
+    //   {
+    //     id: '3',
+    //     title: '3',
+    //   },
+    //   {
+    //     id: '4',
+    //     title: '4',
+    //   },
+    //   {
+    //     id: '5',
+    //     title: '5',
+    //   },
+    //   {
+    //     id: '6',
+    //     title: '6',
+    //   },
+    //   {
+    //     id: '7',
+    //     title: '7',
+    //   },
+    //   {
+    //     id: '8',
+    //     title: '8',
+    //   },
+    //   {
+    //     id: '9',
+    //     title: '9',
+    //   }
       
-    ];
+    // ];
 
       const Shuffle = (arr1) => {
         var ctr = arr1.length, temp, index;
@@ -75,13 +75,15 @@ const CardScreen = () => {
     return(
       <>
         <FlatList
-            data={DATA}
+            data={Shuffle(data)}
             renderItem={({ item }) => (
                 <View style={styles.itemContainer}>
-                    <Cards val = {item.value}/>
+                  <View style = {styles.item}>
+                    <Cards val = {item}/>
+                  </View>
                 </View>
             )}
-            keyExtractor={item => item.id}
+            // keyExtractor={item => item.id}
             numColumns={numColumns} />
 
           {/* {

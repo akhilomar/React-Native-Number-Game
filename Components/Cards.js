@@ -5,6 +5,7 @@ import GestureFlipView from 'react-native-gesture-flip-card';
 const Cards = (props) => {
 
     const [flipType, setFlip] = useState('left');
+    const flipViewRef = React.useRef();
 
     useEffect(() => {
 
@@ -14,11 +15,13 @@ const Cards = (props) => {
     const renderFront = () => {
         return(
             <TouchableOpacity onPress = {() => {
-                this.flipView.flipRight() 
+                flipViewRef.current.flipRight() 
                 setFlip('right');
                 console.log("Pressed" + `${props.val}`)
-        
-        }} >
+                
+        }}
+        hitSlop={{ top: 30, bottom: 30, left: 30, right: 30 }}
+        >
             <View style = {{backgroundColor:'red', width: 100, height: 100, alignItems: 'center', justifyContent: 'center'}}>
                 <Text style = {{color: "white", fontSize: 20}}>Swipe Me</Text>
                 
@@ -47,7 +50,7 @@ const Cards = (props) => {
 
     return(
         <SafeAreaView style = {{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <GestureFlipView ref = {(ref) => this.flipView = ref}  width={300} height = {500}>
+            <GestureFlipView ref={flipViewRef}  width={300} height = {500}>
                 {renderFront()}
                 {renderBack()}
             </GestureFlipView>
